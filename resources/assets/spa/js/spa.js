@@ -1,0 +1,18 @@
+import LocalStorage from './services/localStorage';
+import appConfig from './services/appConfig';
+
+require('materialize-css');
+window.Vue = require('vue');
+
+require('vue-resource');
+Vue.http.options.root = appConfig.api_url;
+
+require('./services/interceptors');
+
+require('./router');
+
+// Vue.component('app', require('./components/App.vue'));
+
+// const app = new Vue({
+//     el: 'body'
+// });
