@@ -9,7 +9,7 @@ const mergeWebpack = require('webpack-merge');
 const env = require('gulp-env');
 const stringifyObject = require('stringify-object');
 const file  = require('gulp-file');
-
+const HOST = "0.0.0.0";
 
 // require('laravel-elixir-vue');
 // require('laravel-elixir-webpack-official');
@@ -42,7 +42,7 @@ gulp.task('webpack-dev-server', () => {
     let config = mergeWebpack(webpackConfig, webpackDevConfig);
     let inlineHot = [
         'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://127.0.0.1:8080',
+        `webpack-dev-server/client?http://${HOST}:8080`,
     ];
 
     config.entry.admin = [config.entry.admin].concat(inlineHot);
@@ -51,7 +51,7 @@ gulp.task('webpack-dev-server', () => {
     new WebpackDevServer(webpack(config), {
         hot: true,
         proxy: {
-            '*': 'http://127.0.0.1:8000'
+            '*': `http://${HOST}:8000`
         },
         watchOptions:{
             poll:true,
@@ -62,8 +62,8 @@ gulp.task('webpack-dev-server', () => {
         stats:{
             colors: true
         }
-    }).listen(8080, "0.0.0.0", function () {
-        
+    }).listen(8080, HOST, function () {
+        console.log("Building project...");
     })
 });
 
@@ -76,8 +76,8 @@ elixir((mix) => {
     gulp.start('spa-config','webpack-dev-server');
 
     mix.browserSync({
-        host: '0.0.0.0',
-        proxy: 'http://127.0.0.1:8080'  // php artisan serve --host=0.0.0.0
+        host: HOST,
+        proxy: `http://${HOST}:8080`    // php artisan serve --host=0.0.0.0
                                         // rodar nessa porta para funcionar com o autoreload
     })
 });
