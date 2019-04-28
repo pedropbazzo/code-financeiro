@@ -35,12 +35,7 @@ Route::group(['middleware' => 'cors','as' => 'api.'], function() {
             $user = Auth::guard('api')->user();
             return $user;
         })->name('user');
-        
-        Route::resource('banks', 'Api\BanksController', ['only' => ['index']]);
-        Route::resource('bank_accounts', 'Api\BankAccountsController', ['except' => ['create', 'edit']]); 
-        Route::resource('categories', 'Api\CategoriesController', ['except' => ['create', 'edit']]);
-        
-       
+
     });
 
 });

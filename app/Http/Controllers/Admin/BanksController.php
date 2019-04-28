@@ -1,10 +1,10 @@
 <?php
 
-namespace CodeFinance\Http\Controllers;
+namespace CodeFinance\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use CodeFinance\Http\Controllers\Controller;
+use CodeFinance\Http\Controllers\Response;
 
-use CodeFinance\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use CodeFinance\Http\Requests\BankCreateRequest;
@@ -202,3 +202,4 @@ class BanksController extends Controller
         return redirect()->back()->with('message', 'Bank deleted.');
     }
 }
+
