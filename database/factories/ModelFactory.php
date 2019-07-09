@@ -12,6 +12,8 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+use Faker\Generator;
+
 $factory->define(CodeFinance\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -33,5 +35,13 @@ $factory->state(CodeFinance\Models\User::class, 'admin', function (Faker\Generat
 $factory->state(CodeFinance\Models\User::class, 'client', function (Faker\Generator $faker) {
     return [
         'role' => \CodeFinance\Models\User::ROLE_CLIENT
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(CodeFinance\Models\Bank::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'logo' => md5(time()) . '.jpeg',
     ];
 });
