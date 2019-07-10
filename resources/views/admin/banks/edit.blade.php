@@ -3,14 +3,14 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h4>Cadastro de bancos</h4>
+            <h4>Editar banco</h4>
 
-            {!! Form::open(['route' => 'admin.banks.store']) !!}
+            {!! Form::model($bank, ['route' => ['admin.banks.update', 'bank' => $bank->id], 'method' => 'PUT']) !!}
 
                 @include('admin.banks._form')
 
                 <div class="row">
-                    {!! Form::submit('Criar banco', ['class' => 'btn waves-effect']) !!}
+                    {!! Form::submit('Salvar banco', ['class' => 'btn waves-effect']) !!}
                 </div>
             {!! Form::close() !!}
         </div>
