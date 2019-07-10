@@ -60,6 +60,11 @@ class BanksController extends Controller
         return view('admin.banks.index', compact('banks'));
     }
 
+
+    public function create() {
+        return view('admin.banks.create');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
