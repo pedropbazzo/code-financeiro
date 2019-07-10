@@ -20,6 +20,9 @@ class Bank extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'logo'
+    ];
 
 }

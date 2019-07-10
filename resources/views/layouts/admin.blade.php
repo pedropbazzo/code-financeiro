@@ -28,16 +28,16 @@
                 $menuConfig = [
                     'name' => Auth::user()->name,
                     'menus' => [
-                        ['name' => 'Contas a pagar', 'url' => '/teste','dropdownId' => 'teste'],
-                        ['name' => 'Contas a receber', 'url' => '/teste1'],
+                        ['name' => 'Bancos', 'url' => route('admin.banks.index')],
+//                        ['name' => 'Contas a pagar', 'url' => '/teste','dropdownId' => 'teste'],
                     ],
                     'menusDropdown' => [
                         [
-                            'id' => 'teste',
-                            'items' => [
-                                ['name' =>  "Listar contas", 'url' => '/listar'],
-                                ['name' =>  "Criar conta", 'url' => '/criar'],
-                            ]
+//                            'id' => 'teste',
+//                            'items' => [
+//                                ['name' =>  "Listar contas", 'url' => '/listar'],
+//                                ['name' =>  "Criar conta", 'url' => '/criar'],
+//                            ]
                         ]
                     ],
                     'urlLogout' => env('URL_ADMIN_LOGOUT'),
