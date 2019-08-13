@@ -3,8 +3,10 @@
 namespace CodeFinance\Providers;
 
 use CodeFinance\Events\BankCreatedEvent;
+use CodeFinance\Events\BankStoredEvent;
 use CodeFinance\Listeners\BankActionListener;
 use CodeFinance\Listeners\BankLogoUpload;
+use CodeFinance\Listeners\BankLogoUploadListener;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -27,7 +29,12 @@ class EventServiceProvider extends ServiceProvider
         BankCreatedEvent::class => [
             BankLogoUpload::class,
             BankActionListener::class
-        ]
+        ],
+
+        BankStoredEvent::class => [
+            BankLogoUploadListener::class
+        ],
+
     ];
 
     /**
