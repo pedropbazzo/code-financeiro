@@ -2,9 +2,11 @@
 
 namespace CodeFinance\Http\Controllers\Admin;
 
+use CodeFinance\Events\BankCreatedEvent;
 use CodeFinance\Http\Controllers\Controller;
 use CodeFinance\Http\Controllers\Response;
 
+use CodeFinance\Models\Bank;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use CodeFinance\Http\Requests\BankCreateRequest;
@@ -56,6 +58,13 @@ class BanksController extends Controller
 //                'data' => $banks,
 //            ]);
 //        }
+
+        $bank = new Bank();
+        $bank->name = "Itau";
+
+        //Testando chamanda de um evento
+//        event(new BankCreatedEvent(new Bank()));
+        event(new BankCreatedEvent($bank));
 
         return view('admin.banks.index', compact('banks'));
     }
