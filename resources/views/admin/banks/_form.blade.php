@@ -7,6 +7,17 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="input-field file-field col s6">
+        <div class="btn">
+            <span>Upload Logo</span>
+            {!! Form::file('logo') !!}
+        </div>
+        <div class="file-path-wrapper">
+            <input type="text" class="file-path"/>
+        </div>
+    </div>
+</div>
 
 
 {{--<?php $errorClass = $errors->first('name') ? ['class' => 'validate invalid']: [] ?>--}}
