@@ -24,12 +24,30 @@ class BankRepositoryEloquent extends BaseRepository implements BankRepository
 
         $model = parent::create($attributes);
 
-        // Criando um novo evento
+        // Dispara o nosso evento
         $event = new BankStoredEvent($model, $logo);
         event($event);
 
         return $model;
     }
+
+    public function update(array $attributes, $id)
+    {
+        $logo = null;
+        if(isset($attributes['logo'])) {
+            $logo = $attributes['logo'];
+            unset($attributes['logo']);
+        }
+
+        $model = parent::update($attributes, $id);
+
+        // Dispara o nosso evento
+        $event = new BankStoredEvent($model, $logo);
+        event($event);
+
+        return $model;
+    }
+
 
     /**
      * Specify Model class name

@@ -158,7 +158,6 @@ class BanksController extends Controller
 //        }
 
         return redirect()->route('admin.banks.index');
-
     }
 
 
