@@ -39,7 +39,7 @@ class BankLogoUploadListener
         if($logo) {
             // Cria o nome do arquivo com o time atual em md5 e concatena com a extensão do arquivo
             // Realiza um ternário para ver se a data de atualização é diferente da data de criação
-            $name = $bank->created_at != $bank->updated_at ? $bank->logo : md5(time()) . '.' . $logo->guessExtension();
+            $name = $bank->created_at != $bank->updated_at ? $bank->logo : md5(time()) .$logo->getClientOriginalName(). '.' . $logo->guessExtension();
 
             // Destino de onde ficara as imagens
             $destFile = $bank->logosDir() ;
